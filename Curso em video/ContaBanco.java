@@ -1,5 +1,6 @@
 import java.util.Scanner;
 public class ContaBanco {
+    
     public long numConta;
     protected String tipo;
     private String dono;
