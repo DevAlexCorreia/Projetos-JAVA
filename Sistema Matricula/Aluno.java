@@ -1,16 +1,25 @@
+import java.util.Random;
+
 public class Aluno extends Curso{
    private long matricula;
    private String nome;
    private String email;
    private int anoIngresso;
- 
 
-//gets e sets
+    public Aluno(String nome, String email, int anoIngresso) {
+        this.nome = nome;
+        this.email = email;
+        this.anoIngresso = anoIngresso;
+        setMatricula();
+    }
+
+    //gets e sets
 public long getMatricula(){
     return matricula;
 }
-public void setMatricula(long matricula){
-    this.matricula = matricula;
+public void setMatricula(){
+    Random rand = new Random();
+    this.matricula = 1000 + rand.nextInt(30);
 }
 public String getNomeAluno(){
     return nome;
