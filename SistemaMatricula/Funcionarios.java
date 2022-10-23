@@ -1,10 +1,8 @@
-import java.util.ArrayList;
 public class Funcionarios extends Nivelacesso{
     private String nomeFunc;
     private String funcaoFunc;    
     private String loginFunc;
     private String senhaFunc;
-    Aluno aluno = new Aluno();
 
     public Funcionarios(String nomeFunc){
         setNomefunc(senhaFunc);
@@ -39,10 +37,10 @@ public void setSenhafunc(String senhaFunc){
 
 //Cadastrar Funcionário
 public void cadastrarFunc(){
-    if(this.funcaoFunc.toLowerCase() == "coordenador"){// Função lower case
+    if(this.funcaoFunc.toLowerCase().equals("coordenador")){// Função lower case
         setControleacesso(3);
     }
-    if(getControleacesso()>=3){
+    if(getControleAcesso()>=3){
         getNomefunc();
         setLoginfunc("Admin3");
         setSenhafunc("senhaadm3");

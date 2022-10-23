@@ -3,9 +3,10 @@ public class Nivelacesso {
     private int controleAcesso;
 
     public Nivelacesso(){
+
         setControleacesso(controleAcesso);
     }
-    public int getControleacesso(){
+    public int getControleAcesso(){
         return controleAcesso;
     }
     public void setControleacesso(int controleAcesso){
