@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Curso{
     private String nomeCurso;
@@ -8,6 +9,7 @@ public class Curso{
     private ArrayList<Aluno> listaAlunos = new ArrayList<Aluno>();
 
 
+
     public Curso(String nomeCurso, String ementaCurso, Funcionarios coordenador, int cargaHoraria) {
         this.nomeCurso = nomeCurso;
         this.ementaCurso = ementaCurso;
@@ -15,8 +17,8 @@ public class Curso{
         this.cargaHoraria = cargaHoraria;
     }
 
-    public void matricularAluno(Aluno aluno){
-        listaAlunos.add(aluno);
+    public void matricularAluno(Aluno ...aluno){
+        listaAlunos.addAll(Arrays.asList(aluno));
     }
 
     public void jubilarAluno(Aluno aluno){
@@ -53,5 +55,9 @@ public class Curso{
 
     public void setCargaHoraria(int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
+    }
+
+    public ArrayList<Aluno> getListaAlunos() {
+        return listaAlunos;
     }
 }

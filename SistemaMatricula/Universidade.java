@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Universidade{// site
     private String nomeUni;
@@ -12,8 +13,8 @@ public class Universidade{// site
         this.cnpj = cnpj;
     }
 
-    public void criarCurso(Curso curso){
-        listaCursos.add(curso);
+    public void criarCurso(Curso ...curso){
+        listaCursos.addAll(Arrays.asList(curso));
     }
 
     public void excluirCurso(Curso curso){
@@ -42,5 +43,9 @@ public class Universidade{// site
 
     public void setCnpj(long cnpj) {
         this.cnpj = cnpj;
+    }
+
+    public ArrayList<Curso> getListaCursos() {
+        return listaCursos;
     }
 }

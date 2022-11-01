@@ -4,9 +4,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Inep {
-    private String materia;
     private String prova;
-    private String nota;
+    private ArrayList<Universidade> listaUniversidades = new ArrayList<Universidade>();
     Random rand = new Random();
 
     public String gerarSenha(){
@@ -34,6 +33,7 @@ public class Inep {
 
             prova[i] = questoes.get(randInt);
             gabarito[i] = respostas.get(randInt);
+
             questoes.remove(randInt);
             respostas.remove(randInt);
         }
@@ -52,6 +52,18 @@ public class Inep {
         }
 
         return nota;
+    }
+
+    public void cadastrarUniversidade(Universidade ...universidade){
+        listaUniversidades.addAll(Arrays.asList(universidade));
+    }
+
+    public void excluirUniversidade(Universidade universidade){
+        listaUniversidades.remove(universidade);
+    }
+
+    public ArrayList<Universidade> getListaUniversidades() {
+        return listaUniversidades;
     }
 
 }
