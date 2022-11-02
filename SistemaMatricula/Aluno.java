@@ -18,6 +18,17 @@ public class Aluno {
         setMatricula();
     }
 
+    @Override
+    public String toString() {
+        return "Aluno{" +
+                "matricula=" + matricula +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", anoIngresso=" + anoIngresso +
+                ", notaEnade=" + notaEnade +
+                '}';
+    }
+
     public String[] fazerProva(String[][] prova) {
         System.out.println("Hora de fazer a prova " + getNomeAluno());
         String[] resposta = new String[prova[0].length];
@@ -27,7 +38,7 @@ public class Aluno {
 
             resposta[i] = sc.nextLine().toLowerCase();
         }
-        System.out.println(Arrays.toString(resposta));
+        System.out.println(" ");
 
         return resposta;
     }

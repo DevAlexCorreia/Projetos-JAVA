@@ -1,23 +1,35 @@
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.ArrayList;
 public class Sistema {
     public static void main(String[] args) {
         //Criar ambiente com universidades, cursos e alunos já cadastrados no inep
         Inep inep = inepSetUp();
 
+        String[][] enade = inep.criarProva();
 
 
-//        Aluno aluno1 = new Aluno("Lucas Falcão", "lalalau@gmail.com", 2022);
+        for (Universidade uni : inep.getListaUniversidades()){
+            System.out.println(uni.getNomeUni() + "\n");
 
-//        String[][] enade = inep.criarProva();
-//
-//        String[] resposta = aluno1.fazerProva(enade);
-//
-//        aluno1.setNotaEnade(inep.corrigirProva(enade, resposta));
+            for (Curso curso : uni.getListaCursos()){
+                System.out.println(curso.getNomeCurso() + "\n");
 
+                //Todos os alunos de cada universidade...
+                for (Aluno aluno: curso.getListaAlunos()){
+                    //Fazer prova
+                    String[] resposta = aluno.fazerProva(enade);
 
+                    //Salvar nota da prova
+                    aluno.setNotaEnade(inep.corrigirProva(enade, resposta));
+                }
+            }
 
+            //Calcular e salvar media da universidade
+            uni.setMediaEnade();
+        }
+
+        //Informações da universidade
+        for(Universidade uni : inep.getListaUniversidades()){
+            System.out.println(uni.toString());
+        }
     }
 
     public static Inep inepSetUp(){
@@ -34,7 +46,8 @@ public class Sistema {
         //Declarar coordenador (temporario)
         Funcionarios coordenador = new Funcionarios("Lucas Falcão");
 
-        int uniQtd = 3, cursoQtd = 0, alunoQtd = 0;
+        int uniQtd = inep.getListaUniversidades().size();
+        int cursoQtd = 0, alunoQtd = 0;
 
         //Para cada universidade...
         for (Universidade uni : inep.getListaUniversidades()){
@@ -46,7 +59,7 @@ public class Sistema {
             //Cadastrar cursos na universidade
             uni.criarCurso(engenharia, direito, medicina);
 
-            cursoQtd += 3;
+            cursoQtd += uni.getListaCursos().size();
 
             //Para cada curso...
             for (Curso curso : uni.getListaCursos()){
@@ -59,7 +72,7 @@ public class Sistema {
                 //Matricular alunos
                 curso.matricularAluno(aluno1, aluno2, aluno3, aluno4);
 
-                alunoQtd += 4;
+                alunoQtd += curso.getListaAlunos().size();
             }
         }
 
