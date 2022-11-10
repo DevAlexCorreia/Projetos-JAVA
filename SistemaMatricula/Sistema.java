@@ -3,6 +3,8 @@ public class Sistema {
         //Criar ambiente com universidades, cursos e alunos já cadastrados no inep
         Inep inep = inepSetUp();
 
+        System.out.println("");
+
         String[][] enade = inep.criarProva();
 
 
@@ -14,8 +16,13 @@ public class Sistema {
 
                 //Todos os alunos de cada universidade...
                 for (Aluno aluno: curso.getListaAlunos()){
-                    //Fazer prova
-                    String[] resposta = aluno.fazerProva(enade);
+                    //Fazer prova manualmente
+//                    String[] resposta = aluno.fazerProva(enade);
+
+                    //Fazer prova automatica
+                    String[] resposta = aluno.fazerProvaAutomatica(enade);
+
+                    System.out.println("");
 
                     //Salvar nota da prova
                     aluno.setNotaEnade(inep.corrigirProva(enade, resposta));
@@ -28,7 +35,7 @@ public class Sistema {
 
         //Informações da universidade
         for(Universidade uni : inep.getListaUniversidades()){
-            System.out.println(uni.toString());
+            System.out.println("Media da " + uni.getNomeUni() + ": " + uni.getMediaEnade());
         }
     }
 
@@ -52,7 +59,7 @@ public class Sistema {
         //Para cada universidade...
         for (Universidade uni : inep.getListaUniversidades()){
             //Declarar cursos
-            Curso engenharia = new Curso("Eletrica", "Muito calculo", coordenador, 3600);
+            Curso engenharia = new Curso("Engenharia Eletrica", "Muito calculo", coordenador, 3600);
             Curso direito = new Curso("Direito", "Muito processo", coordenador, 3200);
             Curso medicina = new Curso("Medicina", "Muito dinheiro", coordenador, 4000);
 
@@ -65,9 +72,9 @@ public class Sistema {
             for (Curso curso : uni.getListaCursos()){
                 //Declarar alunos
                 Aluno aluno1 = new Aluno("Lucas Falcão", "LucasFalcão@gmail.com", 2022);
-                Aluno aluno2 = new Aluno("Larry Falcão", "LarryFalcão@gmail.com", 2022);
-                Aluno aluno3 = new Aluno("Lucas Flowers", "LucasFlowers@gmail.com", 2022);
-                Aluno aluno4 = new Aluno("Larry Flowers", "LarryFlowers@gmail.com", 2022);
+                Aluno aluno2 = new Aluno("Alex Costa", "AlexCosta@gmail.com", 2022);
+                Aluno aluno3 = new Aluno("Vicente Sampaio", "VicenteSampaio@gmail.com", 2022);
+                Aluno aluno4 = new Aluno("Luis Henrique", "LuisHenrique@gmail.com", 2022);
 
                 //Matricular alunos
                 curso.matricularAluno(aluno1, aluno2, aluno3, aluno4);

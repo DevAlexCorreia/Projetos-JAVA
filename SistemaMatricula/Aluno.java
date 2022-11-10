@@ -10,6 +10,7 @@ public class Aluno {
     private int notaEnade;
 
     Scanner sc = new Scanner(System.in);
+    Random rand = new Random();
 
     public Aluno(String nome, String email, int anoIngresso) {
         this.nome = nome;
@@ -38,7 +39,20 @@ public class Aluno {
 
             resposta[i] = sc.nextLine().toLowerCase();
         }
-        System.out.println(" ");
+
+
+        return resposta;
+    }
+
+    public String[] fazerProvaAutomatica(String[][] prova){
+        System.out.println("Prova de " + getNomeAluno() + " feita");
+        String[] resposta = new String[prova[0].length];
+
+        for (int i = 0; i < prova[0].length; i++) {
+            resposta[i] = prova[2][i].split("_")[rand.nextInt(3)];
+        }
+
+        System.out.println("Resposta: " + Arrays.toString(resposta));
 
         return resposta;
     }
@@ -50,7 +64,6 @@ public class Aluno {
     }
 
     public void setMatricula() {
-        Random rand = new Random();
         this.matricula = 1000 + rand.nextInt(99);
     }
 
