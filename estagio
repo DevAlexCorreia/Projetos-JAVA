@@ -1,0 +1,11 @@
+public class main{
+
+    public static void main(String[] args) {        
+        
+        pessoa p1 = new pessoa();
+
+        p1.cadastrarPessoa();                
+        p1.infoPessoa();
+       
+    }
+}
