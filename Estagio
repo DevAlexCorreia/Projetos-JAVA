@@ -1,0 +1,114 @@
+import java.util.Scanner;
+
+public class pessoa {
+    public Scanner read = new Scanner(System.in);
+    public Scanner read2 = new Scanner(System.in);
+    public Scanner read3 = new Scanner(System.in);
+    private double peso;
+    private double altura;
+    private double imc;
+    private String nome;
+    private String sobrenome;
+    private pessoa[] pessoas;
+
+    public pessoa(){
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.peso = peso;
+        this.altura = altura;
+        this.imc = imc; 
+        this.pessoas = pessoas;       
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    public double getAltura() {
+        return altura;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
+
+    public double getImc() {
+        imc = this.peso/(this.altura*this.altura);
+        return imc;
+    }
+
+    public void setImc(double imc) {
+        this.imc = imc;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }    
+
+    public pessoa[] getPessoas() {
+        return pessoas;
+    }
+
+    public void setPessoas(pessoa[] pessoas) {
+        this.pessoas = pessoas;
+    }
+
+    public void cadastrarPessoa(){
+        System.out.println("Quantas pessoas quer cadastrar?");
+        int n = read.nextInt();
+
+        
+        pessoa[] pessoas = new pessoa[n];
+
+        for(int i = 0;i<n;i++){
+
+                pessoa p = new pessoa();
+                System.out.println("Qual o nome da pessoa a ser cadastrada?");
+                String nomePessoa = read.next();
+                p.setNome(nomePessoa);
+                System.out.print("Qual o sobrenome da pessoa a ser cadastrada?\n");
+                String sobrenomePessoa = read3.nextLine();
+                p.setSobrenome(sobrenomePessoa);
+                System.out.println("Qual é o peso da pessoa a ser cadastrada?");
+                double pesoPessoa = read.nextDouble();
+                p.setPeso(pesoPessoa);
+                System.out.println("Qual a altura da pessoa a ser cadastrada?");
+                double alturaPessoa = read2.nextDouble();
+                p.setAltura(alturaPessoa);
+                            
+            p.setImc(getPeso()/(getAltura()*getAltura()));
+
+            pessoas[i] = p;
+
+        }
+        setPessoas(pessoas);
+    }    
+    
+
+    public void infoPessoa(){
+        pessoa[] p1 = getPessoas();
+        for(int i =0;i<p1.length;i++){
+            System.out.printf("%s %s %.2f\n", p1[i].getNome().toUpperCase(), p1[i].getSobrenome().toUpperCase(),p1[i].getImc());
+        }
+        
+       
+        
+    }
+    
+}
